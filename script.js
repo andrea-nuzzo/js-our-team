@@ -32,20 +32,43 @@ const teamCard = [
    
 ];
 
+// All'evento click del pulsante add..
+const newCard = document.getElementById('addMemberButton');
 
+newCard.addEventListener('click', function(){
+    const newName = document.getElementById('name').value;
+    const newRole = document.getElementById('role').value;
+    const newImage = document.getElementById('image').value;
 
+    // Se uno dei campi è vuoto lancia un alert ...
+    if (newName == '' || newRole == '' || newImage == ''){
+        alert('The fields NAME - ROLE - IMAGE are required')
+    }
+    // Altrimenti crea la nuova card
+    else{
+        const newClass = {
+            'image': newImage,
+            'name': newName,
+            'role': newRole,
+        }
+    
+        // Creo la nuova classe
+        createCard(newClass.image, newClass.name,newClass.role, position);
+        
+        //Svuoto i campi
+        document.getElementById('name').value = '';
+        document.getElementById('role').value = '';
+        document.getElementById('image').value = '';
+    }
+});
 
 // Questa variabile serrve per il posityionamento delle Card in Html
 const position = 'team-container'
-
 
 // Questo ciclo popola il container di card
 for( let i = 0; i < teamCard.length; i++){
     createCard(teamCard[i].image, teamCard[i].name,teamCard[i].role, position);
 }
-
-
-
 
 // Questa funzione crea le card nella posizione desiderata.
 function createCard(image, fullName, role, classWhereAppendCard){
@@ -69,7 +92,6 @@ function createCard(image, fullName, role, classWhereAppendCard){
     // Creo il div Card Text
     const cardText = document.createElement('div');
     cardText.classList.add("card-text");
-    console.log(cardText);
 
     // Creo h3 nome
     const name = document.createElement('h3');
