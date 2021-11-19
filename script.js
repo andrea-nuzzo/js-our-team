@@ -31,3 +31,29 @@ const teamCard = [
     },
    
 ];
+
+const teamContainer = document.querySelector('.team-container');
+
+for( let i = 0; i < teamCard.length; i++){
+
+    teamContainer.innerHTML += 
+    `<div class="team-card">
+     <div class="card-image">
+        <img
+          src=${teamCard[i].image}
+          alt=${teamCard[i].name}
+        />
+      </div>
+      <div class="card-text">
+        <h3>${teamCard[i].name}</h3>
+        <p>${teamCard[i].role}</p>
+      </div>
+      </div>`;
+
+}
+
+
+function createCard(image, name, role){
+    
+
+}
